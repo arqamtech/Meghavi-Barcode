@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { YourOrdersPage } from '../../ProfilePages/your-orders/your-orders';
-import { ContactUsPage } from '../../ProfilePages/contact-us/contact-us';
-import { FaqSPage } from '../../ProfilePages/faq-s/faq-s';
 
 @IonicPage()
 @Component({
@@ -19,6 +16,7 @@ export class ProfilePage {
     showBackdrop: false,
   });
 
+  ph  = firebase.auth().currentUser.phoneNumber;
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +24,7 @@ export class ProfilePage {
     public alertCtrl: AlertController,
     public navParams: NavParams
   ) {
+    
   }
 
   getUser() {
@@ -63,7 +62,4 @@ export class ProfilePage {
     });
   }
 
-  gtYourOrders() { this.navCtrl.push(YourOrdersPage) }
-  gtContact() { this.navCtrl.push(ContactUsPage) }
-  gtFaqs() { this.navCtrl.push(FaqSPage) }
 }

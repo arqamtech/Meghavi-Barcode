@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController, AlertController, 
 import { Slides } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../../Supp/tabs/tabs';
-import { LoadedModule } from 'ionic-angular/umd/util/module-loader';
 
 
 @IonicPage()

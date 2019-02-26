@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ContactUsPage page.
+ * Generated class for the PackageDetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-contact-us',
-  templateUrl: 'contact-us.html',
+  selector: 'page-package-details',
+  templateUrl: 'package-details.html',
 })
-export class ContactUsPage {
+export class PackageDetailsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactUsPage');
+    console.log('ionViewDidLoad PackageDetailsPage');
   }
 
 }

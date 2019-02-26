@@ -13,30 +13,30 @@ import { LoaderPage } from '../pages/Supp/loader/loader';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoaderPage;
+  rootPage: any = LoaderPage;
 
-    constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar, 
-    public db : AngularFireDatabase,
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public db: AngularFireDatabase,
     public splashScreen: SplashScreen
-    ) {
+  ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      
-      firebase.auth().onAuthStateChanged((user)=>{
-        if(user){
-          this.db.object(`User Data/Users/${user.uid}`).snapshotChanges().subscribe(snap=>{
-            if(snap.payload.exists()){
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.db.object(`User Data/Users/${user.uid}`).snapshotChanges().subscribe(snap => {
+            if (snap.payload.exists()) {
               this.rootPage = TabsPage;
-            }else{
+            } else {
               this.rootPage = SignUpPage;
-            } 
+            }
           })
-        }else{
+        } else {
           this.rootPage = LoginSplashPage;
         }
       })
@@ -44,7 +44,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  
+
   }
 
 }

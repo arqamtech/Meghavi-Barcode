@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CategoryWiseProductsPage } from '../../HomePages/category-wise-products/category-wise-products';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @Component({
   selector: 'page-home',
@@ -9,42 +9,22 @@ import { CategoryWiseProductsPage } from '../../HomePages/category-wise-products
 })
 export class HomePage {
 
-  bannersRef = this.db.list('Promotionals/Banners', ref=>ref.orderByChild("TimeStamp"));
-  catRef = this.db.list('Categories');
-
-  banners : Array<any>=[];  
-  cats : Array<any>=[];  
+  barcodeText: string="No Code";
 
   constructor(
-  public navCtrl: NavController, 
-  public db : AngularFireDatabase,
-  public navParams: NavParams,
+    public navCtrl: NavController,
+    private barcodeScanner: BarcodeScanner,
+    public db: AngularFireDatabase,
+    public navParams: NavParams,
   ) {
-    this.getBanners();
-    this.getCats();
   }
 
-  getBanners(){
-    this.bannersRef.snapshotChanges().subscribe(snap=>{
-      this.banners = [];
-      snap.forEach(snp=>{
-        let temp : any = snp.payload.val();
-        temp.key = snp.key;
-        this.banners.push(temp)
-      })
-    })
-  }
-  getCats(){
-    this.catRef.snapshotChanges().subscribe(snap=>{
-      this.cats = [];
-      snap.forEach(snp=>{
-        let temp : any = snp.payload.val();
-        temp.key = snp.key;
-        this.cats.push(temp)
-      })
-    })
-  }
-  showProducts(c){
-    this.navCtrl.push(CategoryWiseProductsPage,{cat : c})
+
+  scan() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.barcodeText = barcodeData.text;
+    }).catch(err => {
+      console.log('Error', err);
+    });
   }
 }
