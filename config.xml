@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="in.codebro.arqam" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Megahvi</name>
-    <description>Mwghavi Wellness App</description>
+    <name>Meghavi</name>
+    <description>Meghavi Wellness App</description>
     <author email="arqam@arqam.tech" href="http://arqam.tech/">Mohammed Arqam</author>
     <content src="index.html" />
     <access origin="*" />
