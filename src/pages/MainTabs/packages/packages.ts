@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
+import { PackageDetailsPage } from '../../Packages/package-details/package-details';
 
-/**
- * Generated class for the PackagesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +12,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PackagesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  packages: Array<any> = [];
+
+  constructor(
+    public navCtrl: NavController,
+    public db: AngularFireDatabase,
+    public navParams: NavParams
+  ) {
+    this.getPackages();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PackagesPage');
+  getPackages() {
+    this.db.list(`Packages`).snapshotChanges().subscribe(snapShot => {
+      this.packages = [];
+      snapShot.forEach(snap => {
+        let temp: any = snap.payload.val();
+        temp.key = snap.key;
+        this.packages.push(temp);
+      })
+    })
   }
+
+
+
+  viewPack(p) { this.navCtrl.push(PackageDetailsPage, { pack: p }); }
 
 }

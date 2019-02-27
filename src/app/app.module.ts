@@ -21,6 +21,7 @@ import { PackageDetailsPage } from '../pages/Packages/package-details/package-de
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { PaymentSuccessPage } from '../pages/Payment/payment-success/payment-success';
 
 export const firebaseCred = {
   apiKey: "AIzaSyAPEiwwtgKyLiHBx_l3n43vXWGZ6paiuQM",
@@ -45,6 +46,7 @@ firebase.initializeApp(firebaseCred);
     LoaderPage,
     PackagesPage,
     PackageDetailsPage,
+    PaymentSuccessPage,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ firebase.initializeApp(firebaseCred);
     LoaderPage,
     PackagesPage,
     PackageDetailsPage,
-
+    PaymentSuccessPage,
 
   ],
   providers: [

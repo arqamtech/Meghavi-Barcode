@@ -1,18 +1,29 @@
-<!--
-  Generated template for the PackageDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>packageDetails</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Package Details</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>{{pack.Name}}</ion-card-title>
+      <ion-item>
+        <p ion-text item-start color="primary">Price</p>
+        <p ion-text item-end>{{pack.Price}}</p>
+      </ion-item>
+      <ion-item>
+        <p ion-text item-start color="primary">Hours</p>
+        <p ion-text item-end>{{pack.Hours}}</p>
+      </ion-item>
+      <p>{{pack.Description}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+    <button ion-button block (click)="buyNow()">Buy Now</button>
+  </ion-footer>
 
 </ion-content>

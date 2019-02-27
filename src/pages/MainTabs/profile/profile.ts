@@ -24,12 +24,13 @@ export class ProfilePage {
     public alertCtrl: AlertController,
     public navParams: NavParams
   ) {
-    
+    this.getUser();
   }
 
   getUser() {
     firebase.database().ref("User Data/Users").child(firebase.auth().currentUser.uid).once("value", snap => {
       this.name = snap.val().Name;
+      
     })
   }
 

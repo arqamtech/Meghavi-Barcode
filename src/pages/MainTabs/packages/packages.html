@@ -6,6 +6,25 @@
 
 <ion-content>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 *ngFor="let p of packages">
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>{{p.Name}}</ion-card-title>
+            <ion-item>
+              <p ion-text item-start color="primary">Price</p>
+              <p ion-text item-end>{{p.Price}}</p>
+            </ion-item>
+            <ion-item>
+              <p ion-text item-start color="primary">Hours</p>
+              <p ion-text item-end>{{p.Hours}}</p>
+            </ion-item>
 
-
+            <button ion-button round small float-right (click)="viewPack(p)">View Details</button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

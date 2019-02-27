@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PackageDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PaymentSuccessPage } from '../../Payment/payment-success/payment-success';
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PackageDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pack = this.navParams.get("pack");
+  durMin: number;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.durMin = this.pack.Hours * 60;
+    console.log(this.pack);
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PackageDetailsPage');
+  durRef = firebase.database().ref("User Data/Users").child(firebase.auth().currentUser.uid).child("Duration")
+
+  buyNow() {
+    this.durRef.once("value", itemSnap => {
+      if (itemSnap.exists()) {
+        let temp: number = itemSnap.val() + this.durMin;
+        this.durRef.set(temp);
+      } else {
+        this.durRef.set(this.durMin)
+      }
+    }).then(() => {
+      this.navCtrl.push(PaymentSuccessPage, { pack: this.pack });
+    })
+
   }
 
 }

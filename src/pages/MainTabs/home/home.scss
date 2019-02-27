@@ -1,2 +1,15 @@
 page-home {
+    .cont{
+        text-align: center;
+        border-bottom : 1px solid map-get($colors,primary);
+    }
+    .numb{
+        font-size : 40px;
+        font-weight: 300;
+
+    }
+    .tag{
+        font-size: 16px;
+        font-weight: 400;
+    }
 }

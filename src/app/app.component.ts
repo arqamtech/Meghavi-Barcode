@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 import { SignUpPage } from '../pages/Auths/sign-up/sign-up';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { LoaderPage } from '../pages/Supp/loader/loader';
+import { PaymentSuccessPage } from '../pages/Payment/payment-success/payment-success';
 
 @Component({
   templateUrl: 'app.html'

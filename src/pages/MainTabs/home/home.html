@@ -6,12 +6,17 @@
 
 <ion-content>
 
+  <div class="cont">
+    <h1 class="numb" ion-text color="primary">{{totMins}}</h1>
+    <h1 class="tag">hours remaining</h1>
+  </div>
 
 
+  <!-- {{barcodeText | json}} -->
 
+  <ion-footer no-lines *ngIf="totMins">
+    <button ion-button block (click)="scan()">Start Session</button>
+  </ion-footer>
 
-{{barcodeText | json}}
-
-  <button ion-button (click)="scan()">Start Session</button>
 
 </ion-content>
